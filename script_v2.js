@@ -487,7 +487,7 @@ function comer() {
         // Con el método some verifico si Frutas Silvestres que es
         //  el único alimento por el momento esta en mi arreglo mochila
 
-    } else if (mochila.some(alimento => alimento.nombre == "Fruta Silvestre") === true) {
+    } else if (mochila.some(alimento => alimento.nombre === "Fruta Silvestre") === true) {
 
         // Desestructuro fruta.valNut en valNut
         // y le aplicamos un alias para que sea mas descriptivo y cuando tengamos mas alimentos
@@ -501,6 +501,7 @@ function comer() {
         moral += 10;
         hora += 1;
         clouds(60)
+
         //   Si hay frutas en el arreglo mochila la fruta tiene que Ser
         //   eliminada de mi arreglo cuando el personaje la coma
 
@@ -539,10 +540,9 @@ function comer() {
 
 function tomarAgua() {
 
-    if (mochila.some(objeto => objeto === botellaLlena) === false) {
-        message("No tienes agua para beber")
-    }
-    else if (sed <= 20) {
+    mochila.some(objeto => objeto === botellaLlena) || message("No tienes agua para beber")
+
+     if (sed <= 20) {
         message("No puedes beber agua, no tienes sed")
     }
 
