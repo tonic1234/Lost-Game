@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="data:;base64,=">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Lost Boy Game Alfa</title>
+</head>
+
+<body id="body">
+    <img class="muteIcon" src="./imagenes/mute.png" alt="">
+    <img class="unMuteIcon" src="./imagenes/unmute.png" alt="">
+    <div class="audio">
+         <audio  id="audioDaySun" src="./audio/sonidodiasoleado.mp3" loop ></audio>
+         <audio  id="audioDayRain" src="./audio/lluvia.mp3" loop ></audio>
+         <audio  id="audioNigth" src="./audio/nochebosque.mp3" loop ></audio>
+         <audio  id="click" src="./audio/click4.mp3"></audio>
+         <audio  id="fireplace" src="./audio/fogata2.mp3"></audio>
+         <audio  id="backPackAudio" src="./audio/abririnventario.mp3"></audio>
+         <audio  id="discartAudio" src="./audio/descartar.mp3"></audio>
+         <audio  id="recolectAudio" src="./audio/recolectar.mp3"></audio>
+         </div>
+    <div class="loadScreen">
+        <div>
+       <h2>Cargando...</h3>
+        <lottie-player class="load" src="./imagenes/walking-deer.json" speed="1" loop autoplay>
+        </lottie-player>
+    </div>
+    </div>
+
+    <!-- Pantalla de juego perdido -->
+
+    <div class="loseBox">
+        <h2>Juego Perdido</h2>
+        <p class="timeScore"></p>
+
+        <button class="reStartButton">Jugar de nuevo</button>
+    </div>
+
+    <!-- Pantalla de Nombre de Usuario -->
+    <div class="menuBg">
+        <div class="menuBox">
+            <p class="menuText">Ingrese su nombre</p><input class="nameBox" type="text"><button
+                class="startButton">Jugar</button>
+        </div>
+    </div>
+
+
+    <!-- Pantalla de mensajes -->
+
+
+    <div class="messageBox">
+        <div class="closeDiv"><img id="closeIconMsg" src="./imagenes/close.png" alt=""></div>
+        <p class="message">No puedes recolectar de noche sin algo que te ilumine</p>
+    </div>
+
+    <!-- Pantalla de mochila -->
+
+
+    <div class="inventoryBox">
+        <div class="topBox">
+            <p class="screenTitle">Mochila</p>
+            <img id="closeIconInventory" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="inventorySlotBox">
+
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_1" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_1"></div>
+                <pc class="inventoryTitle_1">
+                    </p>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_2" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_2"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_3" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_3"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_4" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_4"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_5" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_5"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_6" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_6"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_7" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_7"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_8" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_8"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Pantalla de crafting -->
+
+    <div class="craftingBox">
+        <div class="topBox">
+            <p class="screenTitleCraft">Fabricación</p>
+            <img id="closeIconCraft" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="craftItems">
+            <div class="fogataButton"><img src="./imagenes/fuego.png" alt="">
+                <p class="craftTitle">Fogata</p>
+                <p class="craftMaterials">Palo x 4, Piedra x 2</p>
+                <p class="craftDescription">Te permite cocinar y sube tu animo</p>
+            </div>
+            <div class="recolectorButton"><img src="./imagenes/recolectordeagua.png" alt="">
+                <p class="craftTitle">Recolector</p>
+                <p class="craftMaterials">Botella x 1, Hoja x 4</p>
+                <p class="craftDescription">Recolecta agua de roció cada 12 horas</p>
+            </div>
+            <div class="antorchaButton"><img src="./imagenes/antorcha.png" alt="">
+                <p class="craftTitle">Antorcha</p>
+                <p class="craftMaterials">Palo x 1, Hoja x 2</p>
+                <p class="craftDescription">Te permite recolectar en la noche</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de recolección -->
+
+    <div class="recollectBox">
+        <div class="topBox">
+            <p class="screenTitleCraft">Recolección</p>
+            <img id="closeIconRecollect" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="recollectItems">
+            <div class="recollectOne">
+                <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
+                </lottie-player>
+            </div>
+            <div class="recollectTwo">
+                <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
+                </lottie-player>
+            </div>
+            <div class="recollectThree">
+                <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
+                </lottie-player>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla Principal -->
+
+    <div class="gameBox">
+            <header>
+            <div class="headerClockBox"><img src="./imagenes/reloj.png" alt="">
+                <div>
+                    <p class="timeText"></p>
+                    <p class="dayText"></p>
+                </div>
+
+            </div>
+            <div class="rightMenu">
+                <div class="headerCampUpGradesBox"><img class="upgradeIconFogata" src="./imagenes/fuego.png" alt=""><img
+                        class="upgradeIconRecolector" src="./imagenes/recolectordeagua.png" alt=""><img
+                        class="upgradeIconAntorcha" src="./imagenes/antorcha.png" alt=""> </div>
+                <div class="headerMenuIconBox"><img src="./imagenes/menu.png" alt=""></div>
+            </div>
+        </header>
+        <main>
+            <div class="campingMask">
+                <div class="campStatusBox">
+                    <div class="camping">
+                        <div class="rainContainer">
+                            <lottie-player class="rain" src="./imagenes/rain.json" speed="1" loop autoplay>
+                            </lottie-player>
+                            <lottie-player class="rain2" src="./imagenes/rain.json" speed="1" loop autoplay>
+                            </lottie-player>
+                        </div>
+                        <div class="sunMoon"><img class="sunMoonImg" src="./imagenes/solluna2.png" alt=""></div>
+                        <div class="sky"></div>
+                        <div class="clouds">
+                            <div class="cloudOne"></div>
+                            <div class="cloudTwo"></div>
+                            <div class="cloudThree"></div>
+                        </div>
+                        <img class="campingDia" src="./imagenes/campingdia.png" alt="">
+                        <img class="campingTarde" src="./imagenes/campingtarde.png" alt="">
+                        <img class="campingNoche" src="./imagenes/campingnoche2.png" alt="">
+                        <lottie-player class="campFire" src="./imagenes/19597-fire-flame-burning.json" speed="1" loop
+                            autoplay>
+                        </lottie-player>
+                        <img class="fireRock" src="./imagenes/basefuego.png" alt="">
+                        <img class="fireRockNigth" src="./imagenes/basefuegoNoche.png" alt="">
+                        <img class="fireglow" src="./imagenes/resplandor.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="playerStatusBox">
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconSalud" src="./imagenes/salud.png" alt="">
+                    </div>
+                    <div class="statusBarHealth">
+                        <p>SALUD</p>
+                    </div>
+                    <div class="statusBarHealthB">
+                        <p>SALUD</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconCansancio" src="./imagenes/cansancio.png" alt="">
+                    </div>
+                    <div class="statusBarFatigue">
+                        <p>CANSANCIO</p>
+                    </div>
+                    <div class="statusBarFatigueB">
+                        <p>CANSANCIO</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconHambre" src="./imagenes/hambre.png" alt="">
+                    </div>
+                    <div class="statusBarHunger">
+                        <p>HAMBRE</p>
+                    </div>
+                    <div class="statusBarHungerB">
+                        <p>HAMBRE</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconSed" src="./imagenes/sed.png" alt="">
+                    </div>
+                    <div class="statusBarThirst">
+                        <p>SED</p>
+                    </div>
+                    <div class="statusBarThirstB">
+                        <p>SED</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img class="StatusIconMoral" src="./imagenes/moral.png" alt="">
+                    </div>
+                    <div class="statusBarMood">
+                        <p>ANIMO</p>
+                    </div>
+                    <div class="statusBarMoodB">
+                        <p>ANIMO</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="backPackBox">
+                <div class="playerBackPack">
+                    <div class="backPackIcon">
+                        <img src="./imagenes/mochila.png" alt="">
+                    </div>
+                    <div class="backPackContainers">
+
+                        <div class="backPackContainer">
+                            <div class="backPackimg"></div>
+                        </div>
+                        <div class="backPackContainer"></div>
+                        <div class="backPackContainer"></div>
+                        <div class="backPackContainer"></div>
+                        <div class="backPackContainer"></div>
+                        <div class="backPackContainer"></div>
+                        <div class="backPackContainer"></div>
+                        <div class="backPackContainer"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="actionsBox">
+                <div class="actionButton" id="comerButton">
+                    <p class="actionButtonTitle">Comer</p>
+                    <p class="actionDescription">Hambre:-15 Sed:-15 Cansancio:+5 Moral:+10 Tiempo:1 hora</p>
+                </div>
+                <div class="actionButton" id="aguaButton">
+                    <p class="actionButtonTitle">Tomar Agua</p>
+                    <p class="actionDescription">Hambre:-5 Sed:-20, Cansancio:-5, Moral:+10, Tiempo: 1 hora</p>
+                </div>
+                <div class="actionButton" id="dormirButton">
+                    <p class="actionButtonTitle">Dormir</p>
+                    <p class="actionDescription">Hambre:+20, Sed:+20, Cansancio:-40, Moral: +5, Tiempo: 5 horas</p>
+                </div>
+                <div class="actionButton" id="recolectarButton">
+                    <p class="actionButtonTitle">Recolectar</p>
+                    <p class="actionDescription">Hambre:+25, Cansancio:+0, Moral:(de +1 a +3), Tiempo: 2 horas</p>
+                </div>
+                <div class="actionButton" id="fabricarButton">
+                    <p class="actionButtonTitle">Fabricar</p>
+                    <p class="actionDescription">Hambre:+20, Sed:+20, Cansancio:+40, Moral: +20, Tiempo: 2 horas</p>
+                </div>
+                <div class="actionButton" id="esperarButton">
+                    <p class="actionButtonTitle">Esperar</p>
+                    <p class="actionDescription">Hambre:+10, Sed:+10 Cansancio:+10, Moral: -20, Tiempo: 3 horas</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="script_v2.js"></script>
+</body>
+
+</html>

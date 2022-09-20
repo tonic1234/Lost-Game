@@ -1,0 +1,969 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../imagenes/cielodiabg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Urbanist", sans-serif;
+  transition: all 5s;
+}
+body .audio {
+  display: none;
+}
+body .muteIcon {
+  position: absolute;
+  width: 40px;
+  bottom: 30px;
+  right: 30px;
+  z-index: 3;
+  cursor: pointer;
+}
+body .unMuteIcon {
+  position: absolute;
+  width: 40px;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+@keyframes introAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body .loadScreen {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: all 1s;
+  background-color: #111313;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+body .loadScreen div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .loadScreen .load {
+  width: 150px;
+}
+body .loadScreen h2 {
+  color: white;
+  font-size: 52pt;
+  text-align: center;
+}
+body .inventoryBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 620px;
+  height: auto;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .inventoryBox .topBox {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  width: 100%;
+}
+body .inventoryBox .topBox .screenTitle {
+  font-weight: 600;
+  font-size: 15pt;
+  color: #363636;
+  margin-top: 4px;
+}
+body .inventoryBox .topBox img {
+  width: 25px;
+  margin-right: 5px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+body .inventoryBox .inventorySlotBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 95%;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+body .inventoryBox .inventorySlotBox .discardbox {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 130px;
+  height: 140px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+  background-color: rgb(237, 237, 237);
+  border: 1px solid gray;
+  cursor: pointer;
+  transition: all 3s;
+}
+body .inventoryBox .inventorySlotBox .discardbox:hover .discartIcon {
+  opacity: 1;
+}
+body .inventoryBox .inventorySlotBox .discardbox .discartIcon {
+  opacity: 0;
+  position: absolute;
+  width: 20px;
+  top: 10px;
+  right: 10px;
+  transition: 1s all;
+}
+body .inventoryBox .inventorySlotBox .discardbox .discartIcon:hover {
+  transform: scale(1.2);
+}
+body .inventoryBox .inventorySlotBox .discardbox img {
+  width: 70px;
+}
+body .loseBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+  background-color: #111313;
+  transition: 5s all;
+  animation-name: introAnimation;
+  animation-duration: 5s;
+}
+body .loseBox button {
+  background-color: white;
+  color: black;
+  width: 155px;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+body .loseBox h2 {
+  color: white;
+  font-size: 52pt;
+  text-align: center;
+  margin-bottom: 18px;
+}
+body .loseBox .timeScore {
+  color: white;
+  font-size: 16pt;
+  text-align: center;
+  font-weight: 600;
+}
+body .menuBgOut {
+  opacity: 0;
+}
+body .menuBg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url(../imagenes/main.jpg);
+  background-size: cover;
+  z-index: 10;
+  transition: all 3s;
+}
+body .menuBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 12px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 390px;
+  height: 200px;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .menuBox button {
+  background-color: rgb(237, 237, 237);
+  color: black;
+  width: 155px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+body .menuBox .menuText {
+  font-family: "Urbanist", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+body .menuBox .nameBox {
+  width: 280px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+body .menuBox .closeDiv {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+body .menuBox .closeDiv img {
+  width: 30px;
+  text-align: right;
+  cursor: pointer;
+}
+body .messageBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 15px;
+  border-radius: 20px;
+  width: 500px;
+  height: auto;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .messageBox p {
+  width: 90%;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #3F4E4F;
+  margin-bottom: 30px;
+  text-align: center;
+}
+body .messageBox .closeDiv {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+body .messageBox .closeDiv img {
+  width: 25px;
+  text-align: right;
+  cursor: pointer;
+}
+body .craftingBox,
+body .recollectBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 650px;
+  height: auto;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.2s;
+  gap: 5px;
+}
+body .craftingBox .closeDiv,
+body .recollectBox .closeDiv {
+  display: flex;
+  justify-content: end;
+}
+body .craftingBox .closeDiv img,
+body .recollectBox .closeDiv img {
+  width: 25px;
+  margin-right: 5px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+body .craftingBox .topBox,
+body .recollectBox .topBox {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  width: 100%;
+}
+body .craftingBox .topBox .screenTitleCraft,
+body .recollectBox .topBox .screenTitleCraft {
+  font-weight: 600;
+  font-size: 15pt;
+  color: #363636;
+  margin-top: 4px;
+}
+body .craftingBox .topBox img,
+body .recollectBox .topBox img {
+  width: 25px;
+  margin-right: 5px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+body .craftingBox .craftItems,
+body .craftingBox .recollectItems,
+body .recollectBox .craftItems,
+body .recollectBox .recollectItems {
+  display: flex;
+  gap: 10px;
+}
+body .craftingBox .craftItems .antorchaButton,
+body .craftingBox .craftItems .recolectorButton,
+body .craftingBox .craftItems .fogataButton,
+body .craftingBox .craftItems .recollectOne,
+body .craftingBox .craftItems .recollectTwo,
+body .craftingBox .craftItems .recollectThree,
+body .craftingBox .recollectItems .antorchaButton,
+body .craftingBox .recollectItems .recolectorButton,
+body .craftingBox .recollectItems .fogataButton,
+body .craftingBox .recollectItems .recollectOne,
+body .craftingBox .recollectItems .recollectTwo,
+body .craftingBox .recollectItems .recollectThree,
+body .recollectBox .craftItems .antorchaButton,
+body .recollectBox .craftItems .recolectorButton,
+body .recollectBox .craftItems .fogataButton,
+body .recollectBox .craftItems .recollectOne,
+body .recollectBox .craftItems .recollectTwo,
+body .recollectBox .craftItems .recollectThree,
+body .recollectBox .recollectItems .antorchaButton,
+body .recollectBox .recollectItems .recolectorButton,
+body .recollectBox .recollectItems .fogataButton,
+body .recollectBox .recollectItems .recollectOne,
+body .recollectBox .recollectItems .recollectTwo,
+body .recollectBox .recollectItems .recollectThree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 20px;
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+  background-color: rgb(237, 237, 237);
+  margin-bottom: 40px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+body .craftingBox .craftItems .antorchaButton .craftTitle,
+body .craftingBox .craftItems .recolectorButton .craftTitle,
+body .craftingBox .craftItems .fogataButton .craftTitle,
+body .craftingBox .craftItems .recollectOne .craftTitle,
+body .craftingBox .craftItems .recollectTwo .craftTitle,
+body .craftingBox .craftItems .recollectThree .craftTitle,
+body .craftingBox .recollectItems .antorchaButton .craftTitle,
+body .craftingBox .recollectItems .recolectorButton .craftTitle,
+body .craftingBox .recollectItems .fogataButton .craftTitle,
+body .craftingBox .recollectItems .recollectOne .craftTitle,
+body .craftingBox .recollectItems .recollectTwo .craftTitle,
+body .craftingBox .recollectItems .recollectThree .craftTitle,
+body .recollectBox .craftItems .antorchaButton .craftTitle,
+body .recollectBox .craftItems .recolectorButton .craftTitle,
+body .recollectBox .craftItems .fogataButton .craftTitle,
+body .recollectBox .craftItems .recollectOne .craftTitle,
+body .recollectBox .craftItems .recollectTwo .craftTitle,
+body .recollectBox .craftItems .recollectThree .craftTitle,
+body .recollectBox .recollectItems .antorchaButton .craftTitle,
+body .recollectBox .recollectItems .recolectorButton .craftTitle,
+body .recollectBox .recollectItems .fogataButton .craftTitle,
+body .recollectBox .recollectItems .recollectOne .craftTitle,
+body .recollectBox .recollectItems .recollectTwo .craftTitle,
+body .recollectBox .recollectItems .recollectThree .craftTitle {
+  font-size: 14pt;
+  font-weight: 600;
+  text-align: center;
+  line-height: 16px;
+}
+body .craftingBox .craftItems .antorchaButton .craftMaterials,
+body .craftingBox .craftItems .recolectorButton .craftMaterials,
+body .craftingBox .craftItems .fogataButton .craftMaterials,
+body .craftingBox .craftItems .recollectOne .craftMaterials,
+body .craftingBox .craftItems .recollectTwo .craftMaterials,
+body .craftingBox .craftItems .recollectThree .craftMaterials,
+body .craftingBox .recollectItems .antorchaButton .craftMaterials,
+body .craftingBox .recollectItems .recolectorButton .craftMaterials,
+body .craftingBox .recollectItems .fogataButton .craftMaterials,
+body .craftingBox .recollectItems .recollectOne .craftMaterials,
+body .craftingBox .recollectItems .recollectTwo .craftMaterials,
+body .craftingBox .recollectItems .recollectThree .craftMaterials,
+body .recollectBox .craftItems .antorchaButton .craftMaterials,
+body .recollectBox .craftItems .recolectorButton .craftMaterials,
+body .recollectBox .craftItems .fogataButton .craftMaterials,
+body .recollectBox .craftItems .recollectOne .craftMaterials,
+body .recollectBox .craftItems .recollectTwo .craftMaterials,
+body .recollectBox .craftItems .recollectThree .craftMaterials,
+body .recollectBox .recollectItems .antorchaButton .craftMaterials,
+body .recollectBox .recollectItems .recolectorButton .craftMaterials,
+body .recollectBox .recollectItems .fogataButton .craftMaterials,
+body .recollectBox .recollectItems .recollectOne .craftMaterials,
+body .recollectBox .recollectItems .recollectTwo .craftMaterials,
+body .recollectBox .recollectItems .recollectThree .craftMaterials {
+  font-size: 11pt;
+  font-weight: 500;
+  color: #2e2e2e;
+  text-align: center;
+}
+body .craftingBox .craftItems .antorchaButton .craftDescription,
+body .craftingBox .craftItems .recolectorButton .craftDescription,
+body .craftingBox .craftItems .fogataButton .craftDescription,
+body .craftingBox .craftItems .recollectOne .craftDescription,
+body .craftingBox .craftItems .recollectTwo .craftDescription,
+body .craftingBox .craftItems .recollectThree .craftDescription,
+body .craftingBox .recollectItems .antorchaButton .craftDescription,
+body .craftingBox .recollectItems .recolectorButton .craftDescription,
+body .craftingBox .recollectItems .fogataButton .craftDescription,
+body .craftingBox .recollectItems .recollectOne .craftDescription,
+body .craftingBox .recollectItems .recollectTwo .craftDescription,
+body .craftingBox .recollectItems .recollectThree .craftDescription,
+body .recollectBox .craftItems .antorchaButton .craftDescription,
+body .recollectBox .craftItems .recolectorButton .craftDescription,
+body .recollectBox .craftItems .fogataButton .craftDescription,
+body .recollectBox .craftItems .recollectOne .craftDescription,
+body .recollectBox .craftItems .recollectTwo .craftDescription,
+body .recollectBox .craftItems .recollectThree .craftDescription,
+body .recollectBox .recollectItems .antorchaButton .craftDescription,
+body .recollectBox .recollectItems .recolectorButton .craftDescription,
+body .recollectBox .recollectItems .fogataButton .craftDescription,
+body .recollectBox .recollectItems .recollectOne .craftDescription,
+body .recollectBox .recollectItems .recollectTwo .craftDescription,
+body .recollectBox .recollectItems .recollectThree .craftDescription {
+  text-align: center;
+}
+body .craftingBox .craftItems .antorchaButton img,
+body .craftingBox .craftItems .recolectorButton img,
+body .craftingBox .craftItems .fogataButton img,
+body .craftingBox .craftItems .recollectOne img,
+body .craftingBox .craftItems .recollectTwo img,
+body .craftingBox .craftItems .recollectThree img,
+body .craftingBox .recollectItems .antorchaButton img,
+body .craftingBox .recollectItems .recolectorButton img,
+body .craftingBox .recollectItems .fogataButton img,
+body .craftingBox .recollectItems .recollectOne img,
+body .craftingBox .recollectItems .recollectTwo img,
+body .craftingBox .recollectItems .recollectThree img,
+body .recollectBox .craftItems .antorchaButton img,
+body .recollectBox .craftItems .recolectorButton img,
+body .recollectBox .craftItems .fogataButton img,
+body .recollectBox .craftItems .recollectOne img,
+body .recollectBox .craftItems .recollectTwo img,
+body .recollectBox .craftItems .recollectThree img,
+body .recollectBox .recollectItems .antorchaButton img,
+body .recollectBox .recollectItems .recolectorButton img,
+body .recollectBox .recollectItems .fogataButton img,
+body .recollectBox .recollectItems .recollectOne img,
+body .recollectBox .recollectItems .recollectTwo img,
+body .recollectBox .recollectItems .recollectThree img {
+  width: 80%;
+  margin-bottom: 10px;
+}
+body .craftingBox .craftItems .antorchaButton,
+body .craftingBox .recollectItems .antorchaButton,
+body .recollectBox .craftItems .antorchaButton,
+body .recollectBox .recollectItems .antorchaButton {
+  opacity: 30%;
+  filter: grayscale(100%);
+}
+body .craftingBox .craftItems .recolectorButton,
+body .craftingBox .recollectItems .recolectorButton,
+body .recollectBox .craftItems .recolectorButton,
+body .recollectBox .recollectItems .recolectorButton {
+  opacity: 30%;
+  filter: grayscale(100%);
+}
+body .craftingBox .craftItems .fogataButton,
+body .craftingBox .recollectItems .fogataButton,
+body .recollectBox .craftItems .fogataButton,
+body .recollectBox .recollectItems .fogataButton {
+  opacity: 30%;
+  filter: grayscale(100%);
+}
+body .gameBox {
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 20px;
+  width: 414px;
+  height: 900px;
+  transition: all 4s;
+}
+body .gameBox header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+}
+body .gameBox header .rightMenu {
+  display: flex;
+  gap: 20px;
+}
+body .gameBox header .rightMenu .headerMenuIconBox {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 20px;
+  width: 100%;
+}
+body .gameBox header .rightMenu .headerMenuIconBox img {
+  width: 30px;
+}
+body .gameBox header .rightMenu .headerCampUpGradesBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+body .gameBox header .rightMenu .headerCampUpGradesBox .upgradeIconAntorcha {
+  visibility: visible;
+}
+body .gameBox header .rightMenu .headerCampUpGradesBox .upgradeIconRecolector {
+  visibility: hidden;
+}
+body .gameBox header .rightMenu .headerCampUpGradesBox .upgradeIconFogata {
+  visibility: hidden;
+}
+body .gameBox header .rightMenu .headerCampUpGradesBox img {
+  width: 30px;
+}
+body .gameBox header .headerClockBox {
+  display: flex;
+  align-items: center;
+  width: 340px;
+  margin-left: 10px;
+}
+body .gameBox header .headerClockBox p {
+  font-weight: bold;
+  font-size: 14pt;
+  line-height: 18px;
+  margin-left: 10px;
+}
+body .gameBox header .headerClockBox img {
+  width: 33px;
+}
+body .campingMask {
+  display: flex;
+  justify-content: center;
+  margin-top: -35px;
+  margin-bottom: 10px;
+  height: 229px;
+  overflow: hidden;
+}
+body .campingMask .campStatusBox {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 310px;
+  width: 300px;
+  border-radius: 200px;
+  overflow: hidden;
+}
+body .campingMask .campStatusBox .camping {
+  width: 350px;
+  height: 220px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
+  margin-top: 25px;
+  transition: all 3s;
+}
+body .campingMask .campStatusBox .sky {
+  position: absolute;
+  height: 320px;
+  width: 340px;
+  margin-top: -40px;
+  background-image: url(../imagenes/cielodia.png);
+  background-size: contain;
+  background-position: center, top;
+  background-repeat: no-repeat;
+  transition: all 3s;
+}
+@keyframes cloudsAnimations {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(700px);
+  }
+}
+body .campingMask .campStatusBox .campingDia,
+body .campingMask .campStatusBox .campingNoche,
+body .campingMask .campStatusBox .campingTarde {
+  position: absolute;
+  width: 350px;
+  margin-top: 5px;
+  transition: 3s all;
+  z-index: 8;
+}
+body .campingMask .campStatusBox .rainContainer {
+  display: flex;
+  z-index: 20;
+  margin-top: -200px;
+}
+body .campingMask .campStatusBox .rainContainer .rain {
+  position: absolute;
+  width: 300px;
+  margin-top: -30px;
+  filter: brightness(5);
+}
+body .campingMask .campStatusBox .rainContainer .rain2 {
+  position: absolute;
+  margin-top: -30px;
+  width: 300px;
+  margin-left: 125px;
+  filter: brightness(5);
+}
+body .campingMask .campStatusBox .clouds {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  width: 700px;
+  animation-name: cloudsAnimations;
+  animation-iteration-count: infinite;
+  animation-duration: 379s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  gap: 70px;
+  z-index: 5;
+  transition: all 3s;
+}
+body .campingMask .campStatusBox .clouds .cloudOne {
+  margin-top: -120px;
+  width: 210px;
+  height: 100px;
+  background-image: url(../imagenes/nubedia1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 5s all;
+}
+body .campingMask .campStatusBox .clouds .cloudTwo {
+  margin-top: -30px;
+  width: 240px;
+  height: 100px;
+  background-image: url(../imagenes/nubedia2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 5s all;
+}
+body .campingMask .campStatusBox .clouds .cloudThree {
+  width: 220px;
+  height: 100px;
+  background-image: url(../imagenes/nubedia3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 5s all;
+}
+@keyframes fireglow {
+  0% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+body .campingMask .campStatusBox .fireglow {
+  position: absolute;
+  animation-name: fireglow;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate-reverse;
+  margin-left: 97px;
+  margin-top: 130px;
+  transition: 5s all;
+  z-index: 8;
+}
+body .campingMask .campStatusBox .fireRock {
+  position: absolute;
+  width: 40px;
+  margin-left: 225px;
+  margin-top: 175px;
+  transition: 5s all;
+  z-index: 9;
+}
+body .campingMask .campStatusBox .fireRockNigth {
+  position: absolute;
+  width: 40px;
+  margin-left: 3px;
+  margin-left: 225px;
+  margin-top: 175px;
+  transition: 5s all;
+  z-index: 9;
+}
+body .campingMask .campStatusBox .campFire {
+  position: absolute;
+  width: 55px;
+  margin-top: 110px;
+  margin-left: 220px;
+  transition: 5s all;
+  z-index: 10;
+}
+body .campingMask .campStatusBox img {
+  width: 300px;
+  transition: 5s all;
+}
+body .campingMask .campStatusBox .sunMoon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  z-index: 2;
+  margin-left: 25px;
+  margin-top: 130px;
+  transition: 5s all;
+}
+body .campingMask .campStatusBox .sunMoon .sunMoonImg {
+  width: 350px;
+  transform: rotate(0deg);
+  transition: 8s all;
+}
+body .playerStatusBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 5px;
+}
+body .playerStatusBox .playerStatus {
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+body .playerStatusBox .playerStatus .statusBarHealth,
+body .playerStatusBox .playerStatus .statusBarFatigue,
+body .playerStatusBox .playerStatus .statusBarHunger,
+body .playerStatusBox .playerStatus .statusBarThirst,
+body .playerStatusBox .playerStatus .statusBarMood {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  border-radius: 4px;
+  transition: all 5s;
+  overflow: hidden;
+}
+body .playerStatusBox .playerStatus .statusBarHealth p,
+body .playerStatusBox .playerStatus .statusBarFatigue p,
+body .playerStatusBox .playerStatus .statusBarHunger p,
+body .playerStatusBox .playerStatus .statusBarThirst p,
+body .playerStatusBox .playerStatus .statusBarMood p {
+  color: white;
+  font-size: 12pt;
+  font-weight: bolder;
+  margin-left: 10px;
+  letter-spacing: 5px;
+  z-index: 5;
+}
+body .playerStatusBox .playerStatus .statusBarHealthB,
+body .playerStatusBox .playerStatus .statusBarFatigueB,
+body .playerStatusBox .playerStatus .statusBarHungerB,
+body .playerStatusBox .playerStatus .statusBarThirstB,
+body .playerStatusBox .playerStatus .statusBarMoodB {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+body .playerStatusBox .playerStatus .statusBarHealthB p,
+body .playerStatusBox .playerStatus .statusBarFatigueB p,
+body .playerStatusBox .playerStatus .statusBarHungerB p,
+body .playerStatusBox .playerStatus .statusBarThirstB p,
+body .playerStatusBox .playerStatus .statusBarMoodB p {
+  color: #3F4E4F;
+  font-size: 12pt;
+  font-weight: 800;
+  margin-left: 55px;
+  margin-top: 10.5px;
+  letter-spacing: 5px;
+  z-index: 4;
+}
+body .playerStatusBox .playerStatus .statusBarHealth {
+  background-color: #B33030;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarFatigue {
+  background-color: #3F4E4F;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarHunger {
+  background-color: #4E944F;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarThirst {
+  background-color: #4B778D;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarMood {
+  background-color: #ffa322;
+  width: 0px;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(2px);
+  }
+  20% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(0px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
+}
+body .playerStatusBox .playerStatus .satusIconShake {
+  animation-name: shake;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: 3;
+  animation-direction: alternate-reverse;
+}
+body .playerStatusBox .playerStatus .StatusIcon .StatusIconSalud {
+  display: flex;
+  transition: all 1s;
+}
+body .playerStatusBox .playerStatus .StatusIcon img {
+  width: 40px;
+}
+body .backPackBox {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+body .backPackBox .playerBackPack {
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+body .backPackBox .playerBackPack .backPackContainers {
+  gap: 3px;
+  display: flex;
+  margin-left: 3px;
+}
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgb(220, 220, 220);
+  width: 40px;
+  height: 40px;
+  transition: all 1s;
+}
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer .backPackimg {
+  display: flex;
+  z-index: 5;
+  color: rgba(255, 255, 255, 0);
+}
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer .backPackimg img {
+  width: 40px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+body .backPackBox .playerBackPack .backPackIcon img {
+  cursor: pointer;
+  width: 40px;
+  transition: 1s all;
+}
+body .backPackBox .playerBackPack .backPackIcon img:hover {
+  transform: scale(1.1);
+}
+body .actionsBox {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+body .actionsBox .actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  background-color: rgb(237, 237, 237);
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+body .actionsBox .actionButton .actionButtonTitle {
+  font-size: 12pt;
+}
+body .actionsBox .actionButton .actionDescription {
+  font-size: 9pt;
+}/*# sourceMappingURL=styles.css.map */

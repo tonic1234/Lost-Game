@@ -1,0 +1,1111 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../imagenes/cielodiabg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Urbanist', sans-serif;
+    transition: all 5s;
+
+
+    .audio{
+        display: none;
+    }
+
+.muteIcon{
+    position: absolute;
+    width: 40px;
+    bottom: 30px;
+    right: 30px;
+    z-index: 3;
+    cursor: pointer;
+}
+.unMuteIcon{
+    position: absolute;
+    width: 40px;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+    @keyframes introAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .loadScreen {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        transition: all 1s;
+        background-color: #111313;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 20;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .load {
+            width: 150px;
+
+        }
+
+
+        h2 {
+
+            color: white;
+            font-size: 52pt;
+            text-align: center;
+
+
+
+        }
+    }
+
+
+
+
+
+
+    .inventoryBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 620px;
+        height: auto;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+
+        .topBox {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+            width: 100%;
+
+
+
+            .screenTitle {
+                font-weight: 600;
+                font-size: 15pt;
+                color: #363636;
+                margin-top: 4px;
+            }
+
+            img {
+                width: 25px;
+                margin-right: 5px;
+                margin-top: 7px;
+                cursor: pointer;
+            }
+
+        }
+
+
+        .inventorySlotBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            width: 95%;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+
+            .discardbox {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                width: 130px;
+                height: 140px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+                background-color: rgb(237, 237, 237);
+                border: 1px solid gray;
+                cursor: pointer;
+                transition: all 3s;
+
+
+                &:hover {
+                    .discartIcon {
+                        opacity: 1;
+                    }
+                }
+
+
+                .discartIcon {
+                    opacity: 0;
+                    position: absolute;
+                    width: 20px;
+                    top: 10px;
+                    right: 10px;
+                    transition: 1s all;
+
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+
+                img {
+                    width: 70px;
+                }
+            }
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+    .loseBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        z-index: 6;
+        background-color: #111313;
+        transition: 5s all;
+        animation-name: introAnimation;
+        animation-duration: 5s;
+
+
+        button {
+            background-color: white;
+            color: black;
+            width: 155px;
+            height: 50px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        h2 {
+
+            color: white;
+            font-size: 52pt;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+
+        .timeScore {
+            color: white;
+            font-size: 16pt;
+            text-align: center;
+            font-weight: 600;
+
+        }
+    }
+
+
+    .menuBgOut {
+        opacity: 0;
+    }
+
+
+    .menuBg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        background-image: url(../imagenes/main.jpg);
+        background-size: cover;
+        z-index: 10;
+        transition: all 3s;
+    }
+
+
+
+    .menuBox {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 12px;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 390px;
+        height: 200px;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+        button {
+            background-color: rgb(237, 237, 237);
+            color: black;
+            width: 155px;
+            height: 50px;
+            border-radius: 10px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+
+        }
+
+
+
+        .menuText {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nameBox {
+            width: 280px;
+            height: 40px;
+            border-radius: 10px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+
+        .closeDiv {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 5px;
+
+
+            img {
+                width: 30px;
+                text-align: right;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+
+    .messageBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 15px;
+        border-radius: 20px;
+        width: 500px;
+        height: auto;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+        p {
+            width: 90%;
+            font-size: 16pt;
+            font-weight: bold;
+            color: #3F4E4F;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+
+        .closeDiv {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 5px;
+
+
+            img {
+                width: 25px;
+                text-align: right;
+                cursor: pointer;
+            }
+        }
+
+
+
+
+    }
+
+    .craftingBox,
+    .recollectBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 650px;
+        height: auto;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.2s;
+        gap: 5px;
+
+
+        .closeDiv {
+            display: flex;
+            justify-content: end;
+
+            img {
+                width: 25px;
+                margin-right: 5px;
+                margin-top: 7px;
+                cursor: pointer;
+            }
+        }
+
+
+        .topBox {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+            width: 100%;
+
+
+
+            .screenTitleCraft {
+                font-weight: 600;
+                font-size: 15pt;
+                color: #363636;
+                margin-top: 4px;
+            }
+
+            img {
+                width: 25px;
+                margin-right: 5px;
+                margin-top: 7px;
+                cursor: pointer;
+            }
+
+        }
+
+
+
+        .craftItems,
+        .recollectItems {
+            display: flex;
+            gap: 10px;
+
+            .antorchaButton,
+            .recolectorButton,
+            .fogataButton,
+            .recollectOne,
+            .recollectTwo,
+            .recollectThree {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                padding: 20px;
+                width: 200px;
+                height: 250px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+                background-color: rgb(237, 237, 237);
+                margin-bottom: 40px;
+                border: 1px solid gray;
+                cursor: pointer;
+
+                .craftTitle {
+                    font-size: 14pt;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 16px;
+                }
+
+                .craftMaterials {
+                    font-size: 11pt;
+                    font-weight: 500;
+                    color: #2e2e2e;
+                    text-align: center;
+                }
+
+                .craftDescription {
+                    text-align: center;
+                }
+
+
+                img {
+                    width: 80%;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .antorchaButton {
+                opacity: 30%;
+                filter: grayscale(100%);
+
+            }
+
+            .recolectorButton {
+                opacity: 30%;
+                filter: grayscale(100%);
+
+            }
+
+            .fogataButton {
+                opacity: 30%;
+                filter: grayscale(100%);
+
+            }
+
+
+        }
+
+
+
+    }
+
+
+
+    .gameBox {
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 20px;
+        width: 414px;
+        height: 900px;
+        transition: all 4s;
+        // box-shadow: 1px 2px 5px rgb(200, 200, 200);
+
+
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 20px;
+
+            .rightMenu {
+                display: flex;
+                gap: 20px;
+
+                .headerMenuIconBox {
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+                    margin-right: 20px;
+                    width: 100%;
+
+                    img {
+                        width: 30px;
+                    }
+                }
+
+
+                .headerCampUpGradesBox {
+
+                    display: flex;
+                    
+                    align-items: center;
+                    gap: 5px;
+
+
+                    .upgradeIconAntorcha {
+                        visibility: visible;
+                    }
+
+                    .upgradeIconRecolector {
+                        visibility: hidden;
+                    }
+
+                    .upgradeIconFogata {
+                        visibility: hidden;
+                    }
+
+                    img {
+                        width: 30px;
+                    }
+                }
+
+
+            }
+
+
+
+            .headerClockBox {
+
+                display: flex;
+                align-items: center;
+                width: 340px;
+                margin-left: 10px;
+                
+
+                p {
+                    font-weight: bold;
+                    font-size: 14pt;
+                    line-height: 18px;
+                    margin-left: 10px;
+                }
+
+
+                img {
+                    width: 33px;
+
+                }
+            }
+        }
+
+    }
+
+    .campingMask {
+        display: flex;
+        justify-content: center;
+        margin-top: -35px;
+        margin-bottom: 10px;
+        height: 229px;
+        overflow: hidden;
+
+
+        .campStatusBox {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            margin-bottom: 10px;
+            height: 310px;
+            width: 300px;
+            border-radius: 200px;
+            overflow: hidden;
+            // border: #111313 solid 1px;
+
+            .camping {
+                width: 350px;
+                height: 220px;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                z-index: 3;
+                margin-top: 25px;
+                transition: all 3s;
+            }
+
+            .sky {
+                position: absolute;
+                height: 320px;
+                width: 340px;
+                margin-top: -40px;
+                background-image: url(../imagenes/cielodia.png);
+                background-size: contain;
+                background-position: center, top;
+                background-repeat: no-repeat;
+                transition: all 3s;
+            }
+
+            @keyframes cloudsAnimations {
+
+                from {
+                    transform: translateX(-500px);
+                }
+
+                to {
+                    transform: translateX(700px);
+                }
+            }
+
+            .campingDia,
+            .campingNoche,
+            .campingTarde {
+                position: absolute;
+                width: 350px;
+                margin-top: 5px;
+                transition: 3s all;
+                z-index: 8;
+            }
+
+            .rainContainer{
+                display: flex;
+               
+                z-index: 20;
+                margin-top: -200px;
+
+                .rain {
+                    position: absolute;
+                     width: 300px;
+                    margin-top: -30px;
+                    filter: brightness(5);
+                }
+    
+                .rain2 {
+                    position: absolute;
+                    margin-top: -30px;
+                    width: 300px;
+                    margin-left: 125px;
+                    filter: brightness(5);
+                }
+
+            }
+
+            .clouds {
+                display: flex;
+                position: absolute;
+                align-items: center;
+                width: 700px;
+                animation-name: cloudsAnimations;
+                animation-iteration-count: infinite;
+                animation-duration: 379s;
+                animation-delay: 0s;
+                animation-timing-function: linear;
+                gap: 70px;
+                z-index: 5;
+                // filter: blur(0.5px) brightness(0.7) saturate(40%);
+                transition: all 3s;
+
+                .cloudOne {
+                    margin-top: -120px;
+                    width: 210px;
+                    height: 100px;
+                    background-image: url(../imagenes/nubedia1.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    transition: 5s all;
+
+                }
+
+                .cloudTwo {
+                    margin-top: -30px;
+                    width: 240px;
+                    height: 100px;
+                    background-image: url(../imagenes/nubedia2.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    transition: 5s all;
+
+                }
+
+                .cloudThree {
+                    width: 220px;
+                    height: 100px;
+                    background-image: url(../imagenes/nubedia3.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    transition: 5s all;
+                }
+            }
+
+            @keyframes fireglow {
+                0% {
+                    transform: scale(1.1);
+                }
+
+                20% {
+                    transform: scale(1.0);
+                }
+
+                40% {
+                    transform: scale(0.9);
+                }
+
+                60% {
+                    transform: scale(1.0);
+                }
+
+                80% {
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    transform: scale(0.9);
+                }
+            }
+
+
+            .fireglow {
+
+                position: absolute;
+                animation-name: fireglow;
+                animation-iteration-count: infinite;
+                animation-duration: 3s;
+                animation-direction: alternate-reverse;
+                margin-left: 97px;
+                margin-top: 130px;
+                transition: 5s all;
+                z-index: 8;
+            }
+
+            .fireRock {
+                position: absolute;
+                width: 40px;
+                margin-left: 225px;
+                margin-top: 175px;
+                transition: 5s all;
+                z-index: 9;
+
+            }
+
+            .fireRockNigth {
+                position: absolute;
+                width: 40px;
+                margin-left: 3px;
+                margin-left: 225px;
+                margin-top: 175px;
+                transition: 5s all;
+                z-index: 9;
+
+            }
+
+
+            .campFire {
+                position: absolute;
+                width: 55px;
+                margin-top: 110px;
+                margin-left: 220px;
+                transition: 5s all;
+                z-index: 10;
+
+            }
+
+            img {
+                width: 300px;
+                transition: 5s all;
+
+            }
+
+            .sunMoon {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 300px;
+                height: 300px;
+                z-index: 2;
+                margin-left: 25px;
+                margin-top: 130px;
+                transition: 5s all;
+
+
+
+                .sunMoonImg {
+                    width: 350px;
+                    transform: rotate(0deg);
+                    transition: 8s all;
+                    
+
+                }
+            }
+        }
+
+
+
+    }
+
+    .playerStatusBox {
+
+        display: flex;
+        // width: 100%;
+        flex-direction: column;
+        gap: 5px;
+        margin-left: 5px;
+
+        .playerStatus {
+            display: flex;
+            height: 40px;
+            width: 100%;
+
+            .statusBarHealth,
+            .statusBarFatigue,
+            .statusBarHunger,
+            .statusBarThirst,
+            .statusBarMood {
+
+                display: flex;
+                align-items: center;
+                margin-left: 5px;
+                border-radius: 4px;
+                transition: all 5s;
+                overflow: hidden;
+
+
+                p {
+                    color: white;
+                    font-size: 12pt;
+                    font-weight: bolder;
+                    margin-left: 10px;
+                    letter-spacing: 5px;
+                    z-index: 5;
+
+                }
+
+
+
+
+            }
+
+            .statusBarHealthB,
+            .statusBarFatigueB,
+            .statusBarHungerB,
+            .statusBarThirstB,
+            .statusBarMoodB {
+                position: absolute;
+                display: flex;
+                align-items: center;
+
+
+                p {
+                    color: #3F4E4F;
+                    font-size: 12pt;
+                    font-weight: 800;
+                    margin-left: 55px;
+                    margin-top: 10.5px;
+                    letter-spacing: 5px;
+                    z-index: 4;
+
+                }
+
+
+
+
+            }
+
+
+            .statusBarHealth {
+                background-color: #B33030;
+                width: 0px;
+                ;
+            }
+
+            .statusBarFatigue {
+                background-color: #3F4E4F;
+                width: 0px;
+            }
+
+            .statusBarHunger {
+                background-color: #4E944F;
+                width: 0px;
+            }
+
+            .statusBarThirst {
+                background-color: #4B778D;
+                width: 0px;
+            }
+
+            .statusBarMood {
+                background-color: #ffa322;
+                width: 0px;
+            }
+
+
+            @keyframes shake {
+                0% {
+                    transform: translateX(2px);
+                }
+
+                20% {
+                    transform: translateX(0px);
+                }
+
+                40% {
+                    transform: translateX(-2px);
+                }
+
+                60% {
+                    transform: translateX(0px);
+                }
+
+                80% {
+                    transform: translateX(2px);
+                }
+
+                100% {
+                    transform: translateX(-2px);
+                }
+            }
+
+            .satusIconShake {
+                animation-name: shake;
+                animation-duration: 0.2s;
+                animation-timing-function: linear;
+                animation-iteration-count: 3;
+                animation-direction: alternate-reverse;
+            }
+
+
+            .StatusIcon {
+                .StatusIconSalud {
+                    display: flex;
+                    transition: all 1s;
+                }
+
+                img {
+                    width: 40px;
+
+                }
+            }
+        }
+
+    }
+
+    .backPackBox {
+
+        display: flex;
+        // width: 100%;
+        margin-top: 10px;
+        margin-left: 5px;
+
+        .playerBackPack {
+            display: flex;
+            height: 40px;
+            width: 100%;
+
+
+            .backPackContainers {
+                gap: 3px;
+                display: flex;
+                margin-left: 3px;
+
+                .backPackContainer {
+                    display: flex;
+                    align-items: center;
+                    border-radius: 4px;
+                    background-color: rgb(220, 220, 220);
+                    width: 40px;
+                    height: 40px;
+                    transition: all 1s;
+
+
+
+                    .backPackimg {
+                        display: flex;
+
+                        z-index: 5;
+                        color: #ffffff00;
+
+                        img {
+                            width: 40px;
+                            border: 1px solid gray;
+                            border-radius: 4px;
+                        }
+
+                    }
+
+
+                }
+            }
+
+            .backPackIcon {
+
+                img {
+                    cursor: pointer;
+                    width: 40px;
+                    transition: 1s all;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .actionsBox {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .actionButton {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            align-items: center;
+            background-color: rgb(237, 237, 237);
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+
+
+            .actionButtonTitle {
+                font-size: 12pt;
+            }
+
+            .actionDescription {
+                font-size: 9pt;
+            }
+        }
+
+    }
+}
